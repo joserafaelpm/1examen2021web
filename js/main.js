@@ -21,10 +21,11 @@ var datos;
 
 loadJSON('https://carlosreneas.github.io/endpoints/noticias.json',
          function(data) { 
+            datos = data;
              cargarimagen(data[0].img);
-             cargarTresPrimerasNoticias(data);
+             cargarTresPrimerasNoticias();
              cargarDataCategorias(data);
-             datos = data;
+             
           },
          function(xhr) { console.error(xhr); }
 );
@@ -48,16 +49,13 @@ function cargarimagen(url){
 }
 
 
-function cargarTresPrimerasNoticias(array){
+function cargarTresPrimerasNoticias(){
+    reset();
     var div = document.querySelector("#contenedor-noticias");
-    
     for(var i=0;i<3;i++){
-        var data=array[i];
-        div.innerHTML += '<div class="noticia"><div class="titulo">'+data.titulo+' '+data.fecha+'</div><hr><div class="descripcion">'+data.descripcion+' <a href="html/vermas.html?id='+data.id+'" class="btn btn-success m-auto">Ver más</a></div></div>';
+        div.innerHTML += '<div class="noticia"><div class="titulo">'+datos[i].titulo+' '+datos[i].fecha+'</div><hr><div class="descripcion">'+datos[i].descripcion+' <a href="html/vermas.html?id='+datos[i].id+'" class="btn btn-success m-auto">Ver más</a></div></div>';
     }
-
     div.innerHTML +='<button onclick="verTodasNoticias()" class="btn btn-success w-100 b-20" >Ver todas las noticias</button>';
-
 }
 
 function verTodasNoticias(){
