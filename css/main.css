@@ -43,6 +43,16 @@
     text-decoration: none;
     color: black;
 }
+
+.titulo-inicio{
+    font-size: 1.5em;
+    text-decoration: none;
+    color: white;
+
+}
+.titulo-inicio:hover{
+    color: dimgrey;
+}
 .titulo:hover{
     color: dimgrey;
 }
